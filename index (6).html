@@ -1,0 +1,3149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenvix Store Store | Luxury Fragrances</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ============================================
+   Zenvix STORE - PROFESSIONAL CSS
+   ============================================ */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-color: #1a1a1a;
+    --accent-color: #c9a962;
+    --accent-hover: #e5c585;
+    --text-dark: #2d2d2d;
+    --text-light: #666666;
+    --text-muted: #999999;
+    --white: #ffffff;
+    --off-white: #f9f9f9;
+    --light-gray: #f5f5f5;
+    --border-color: #e0e0e0;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-strong: 0 15px 50px rgba(0, 0, 0, 0.15);
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--off-white);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-smooth);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    font-family: var(--font-body);
+}
+
+/* ===== LOADING ANIMATION ===== */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-logo {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    color: var(--white);
+    margin-bottom: 20px;
+    animation: float 2s ease-in-out infinite;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== HEADER STYLES ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: var(--white);
+    box-shadow: var(--shadow-soft);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition-smooth);
+}
+
+.header.scrolled {
+    padding: 15px 50px;
+    box-shadow: var(--shadow-medium);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: var(--accent-color);
+    font-style: italic;
+}
+
+.header-search {
+    flex: 1;
+    max-width: 450px;
+    margin: 0 40px;
+    position: relative;
+}
+
+.header-search input {
+    width: 100%;
+    padding: 14px 50px 14px 25px;
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    transition: var(--transition-smooth);
+    background: var(--light-gray);
+}
+
+.header-search input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(201, 169, 98, 0.1);
+}
+
+.header-search i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-actions a,
+.header-actions .cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark);
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: var(--transition-smooth);
+    background: transparent;
+    border: 2px solid transparent;
+}
+
+.header-actions a:hover,
+.header-actions .cart-btn:hover {
+    background: var(--light-gray);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.cart-count {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    display: flex;
+    justify-content: center;
+    background: var(--primary-color);
+    padding: 0;
+    position: relative;
+}
+
+.nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-hover), var(--accent-color));
+}
+
+.nav a {
+    padding: 20px 35px;
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: var(--transition-smooth);
+    transform: translateX(-50%);
+}
+
+.nav a:hover {
+    color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav a:hover::before {
+    width: 100%;
+}
+
+.nav .dropdown {
+    position: relative;
+}
+
+.nav .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--white);
+    min-width: 200px;
+    box-shadow: var(--shadow-medium);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition-smooth);
+    z-index: 100;
+}
+
+.nav .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav .dropdown-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--text-dark);
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.nav .dropdown-menu a:hover {
+    background: var(--light-gray);
+    color: var(--accent-color);
+}
+
+/* ===== HERO BANNER ===== */
+.hero-banner {
+    position: relative;
+    height: 500px;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.85) 0%, rgba(26, 26, 26, 0.6) 100%),
+                url("banner.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(201, 169, 98, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    padding-left: 80px;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content h1 span {
+    color: var(--accent-color);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 35px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-primary {
+    padding: 16px 45px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50px;
+    transition: var(--transition-smooth);
+    box-shadow: 0 5px 25px rgba(201, 169, 98, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(201, 169, 98, 0.5);
+}
+
+.btn-secondary {
+    padding: 16px 45px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid var(--white);
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+    border-radius: 50px;
+    transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+/* ===== FEATURES BAR ===== */
+.features-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--primary-color);
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-smooth);
+}
+
+.feature-item:last-child {
+    border-right: none;
+}
+
+.feature-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.feature-icon {
+    font-size: 32px;
+    color: var(--accent-color);
+}
+
+.feature-text h4 {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    color: var(--white);
+    margin-bottom: 5px;
+}
+
+.feature-text p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+}
+
+/* ===== SECTION STYLES ===== */
+.section {
+    padding: 80px 50px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+    border-radius: 2px;
+}
+
+.section-header p {
+    color: var(--text-light);
+    font-size: 16px;
+    margin-top: 25px;
+    font-weight: 300;
+}
+
+/* ===== PRODUCTS GRID ===== */
+.products-section {
+    background: var(--white);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 35px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* PRODUCT CARD */
+.product-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    position: relative;
+    box-shadow: var(--shadow-soft);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-strong);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    background: var(--light-gray);
+    aspect-ratio: 3/4;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.08);
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 15px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.product-badge.sale {
+    background: #e74c3c;
+    color: var(--white);
+}
+
+.product-badge.new {
+    background: #27ae60;
+    color: var(--white);
+}
+
+.product-wishlist {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    border-radius: 50%;
+    box-shadow: var(--shadow-soft);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover .product-wishlist {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product-wishlist:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.product-actions {
+    position: absolute;
+    bottom: -60px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(26, 26, 26, 0.95), transparent);
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover .product-actions {
+    bottom: 0;
+}
+
+.product-actions button {
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.product-actions .add-cart {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.product-actions .add-cart:hover {
+    background: var(--white);
+}
+
+.product-actions .quick-view {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.product-actions .quick-view:hover {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+.product-info {
+    padding: 25px;
+    text-align: center;
+}
+
+.product-category {
+    font-size: 12px;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.product-card h3 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover h3 {
+    color: var(--accent-color);
+}
+
+.product-rating {
+    margin-bottom: 12px;
+    color: #ffc107;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.product-rating span {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.product-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.current-price {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.original-price {
+    font-size: 16px;
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+.discount {
+    font-size: 12px;
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.product-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50px;
+    transition: var(--transition-smooth);
+}
+
+.product-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* ===== CATEGORY SECTION ===== */
+.category-section {
+    background: var(--light-gray);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.category-card {
+    position: relative;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+.category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(26, 26, 26, 0.8), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+}
+
+.category-content h3 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.category-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.category-link {
+    color: var(--accent-color);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.category-link:hover {
+    color: var(--white);
+}
+
+/* ===== NEWSLETTER SECTION ===== */
+.newsletter-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2d2d2d 100%);
+    text-align: center;
+    padding: 80px 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(201, 169, 98, 0.1) 0%, transparent 70%);
+}
+
+.newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.newsletter-content h2 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.newsletter-content p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 16px 25px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 15px;
+    font-family: var(--font-body);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    transition: var(--transition-smooth);
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.newsletter-form button {
+    padding: 16px 35px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50px;
+    transition: var(--transition-smooth);
+}
+
+.newsletter-form button:hover {
+    background: var(--white);
+    transform: translateY(-2px);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 80px 50px 30px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto 50px;
+}
+
+.footer-brand .logo {
+    color: var(--white);
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    font-size: 16px;
+    transition: var(--transition-smooth);
+}
+
+.social-links a:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-column h4 {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    color: var(--white);
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--accent-color);
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    transition: var(--transition-smooth);
+    display: inline-block;
+}
+
+.footer-column ul li a:hover {
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.contact-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.contact-info i {
+    color: var(--accent-color);
+    margin-top: 4px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 15px;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-container {
+    background: var(--white);
+    width: 90%;
+    max-width: 550px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.4s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h3 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.modal-close {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--light-gray);
+    font-size: 20px;
+    color: var(--text-dark);
+    transition: var(--transition-smooth);
+    border: none;
+}
+
+.modal-close:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.modal-body {
+    padding: 30px 25px;
+}
+
+/* Product Detail Modal */
+.product-modal-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.product-modal-image img {
+    width: 100%;
+    border-radius: 15px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.product-modal-info h2 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.product-modal-info .product-rating {
+    margin-bottom: 15px;
+}
+
+.product-modal-info .product-price {
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.product-modal-info .current-price {
+    font-size: 26px;
+}
+
+.product-modal-info p {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.product-meta {
+    margin-bottom: 25px;
+}
+
+.product-meta-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-meta-item span:first-child {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.product-meta-item span:last-child {
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.quantity-selector label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.quantity-input {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.quantity-input button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: var(--light-gray);
+    font-size: 18px;
+    color: var(--text-dark);
+    transition: var(--transition-smooth);
+}
+
+.quantity-input button:hover {
+    background: var(--accent-color);
+}
+
+.quantity-input input {
+    width: 60px;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.modal-actions .btn-primary {
+    flex: 1;
+}
+
+.modal-actions .btn-secondary {
+    flex: 1;
+    padding: 16px;
+    text-align: center;
+    border-radius: 50px;
+}
+
+/* Order Method Modal */
+.order-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-method-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: var(--light-gray);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.order-method-btn:hover {
+    border-color: var(--accent-color);
+    background: var(--white);
+    transform: translateX(5px);
+}
+
+.order-method-btn i {
+    font-size: 24px;
+    color: var(--accent-color);
+}
+
+.order-method-btn.whatsapp i {
+    color: #25d366;
+}
+
+.order-method-btn.instagram i {
+    color: #e4405f;
+}
+
+.order-method-btn.website i {
+    color: var(--primary-color);
+}
+
+/* Direct Order Form */
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 14px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: var(--font-body);
+    transition: var(--transition-smooth);
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(201, 169, 98, 0.1);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.order-summary {
+    background: var(--light-gray);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.order-summary h4 {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+.order-success {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 40px;
+    color: var(--primary-color);
+}
+
+.order-success h3 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.order-success p {
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+/* ===== TOAST NOTIFICATION ===== */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 16px 30px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-strong);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast i {
+    color: var(--accent-color);
+    font-size: 20px;
+}
+
+.toast span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 1200px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .features-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .feature-item:nth-child(2) {
+        border-right: none;
+    }
+    
+    .feature-item:nth-child(1),
+    .feature-item:nth-child(2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+@media (max-width: 992px) {
+    .header {
+        padding: 15px 30px;
+    }
+    
+    .header-search {
+        max-width: 300px;
+        margin: 0 20px;
+    }
+    
+    .nav a {
+        padding: 18px 25px;
+        font-size: 12px;
+    }
+    
+    .hero-banner {
+        height: 400px;
+    }
+    
+    .hero-content {
+        padding-left: 50px;
+        max-width: 500px;
+    }
+    
+    .hero-content h1 {
+        font-size: 44px;
+    }
+    
+    .product-modal-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .section {
+        padding: 60px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    
+    .header-search {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav a {
+        padding: 15px 20px;
+        font-size: 12px;
+    }
+    
+    .hero-banner {
+        height: 350px;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .hero-content {
+        padding: 0 20px;
+        max-width: 100%;
+    }
+    
+    .hero-content h1 {
+        font-size: 36px;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .features-bar {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .feature-item:last-child {
+        border-bottom: none;
+    }
+    
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer-column h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .modal-container {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    
+    .logo {
+        font-size: 28px;
+    }
+    
+    .section-header h2 {
+        font-size: 32px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-image {
+        aspect-ratio: 1/1;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .order-method-btn {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* ===== SELECTION COLOR ===== */
+::selection {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: flex !important;
+}
+</style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+        <div class="loading-logo">Zenvix<span>.</span></div>
+        <div class="loading-spinner"></div>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="header" id="mainHeader">
+    <a href="#" class="logo">Zenvix<span>.</span></a>
+    
+    <div class="header-search">
+        <input type="text" placeholder="Search perfumes..." id="searchInput" onkeyup="searchProduct()">
+        <i class="fas fa-search"></i>
+    </div>
+    
+    <div class="header-actions">
+        <a href="#"><i class="far fa-user"></i> Account</a>
+        <a href="#" class="cart-btn" onclick="toggleCart()">
+            <i class="fas fa-shopping-bag"></i>
+            Cart
+            <span class="cart-count" id="cartCount">0</span>
+        </a>
+    </div>
+</header>
+
+<!-- Navigation -->
+<nav class="nav">
+    <a href="#">Home</a>
+    <div class="dropdown">
+        <a href="#">Products <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 5px;"></i></a>
+        <div class="dropdown-menu">
+            <a href="#">Fashion</a>
+            <a href="#">Women</a>
+            <a href="#">Men</a>
+        </div>
+    </div>
+    <a href="#">New</a>
+</nav>
+
+<!-- Hero Banner -->
+<section class="hero-banner">
+    <div class="hero-content">
+        <span class="hero-badge">New Accocerios 2026</span>
+        <div class="hero-buttons">
+            <button class="btn-primary" onclick="scrollToProducts()">Shop Now</button>
+            <button class="btn-secondary" onclick="scrollToProducts()">View Collection</button>
+        </div>
+    </div>
+</section>
+
+<!-- Features Bar -->
+<section class="features-bar">
+    <div class="feature-item">
+        <i class="fas fa-shipping-fast feature-icon"></i>
+        <div class="feature-text">
+            <p>On Special Times</p>
+        </div>
+    </div>
+    <div class="feature-item">
+        <i class="fas fa-check-circle feature-icon"></i>
+        <div class="feature-text">
+            <h4>100% Authentic</h4>
+            <p>Guaranteed genuine products</p>
+        </div>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section class="section products-section" id="productsSection">
+    <div class="section-header">
+        <h2>Our Collection</h2>
+        <p>Best Accecories</p>
+    </div>
+    
+    <div class="products-grid" id="productsGrid">
+        
+        <!-- Product 1 -->
+        <div id="product1" class="product-card" onclick="showProductDetail('zeroone.jpg', 'Alphabet Character Kids Pillow', '₹225', 'A Uniquer Pilow kids for kis for there high IQ.', 'BABIES', '5', 'SOFT MATERIAL BABY FRIENDLY')">
+            <div class="product-image">
+                <img src="zeroone.jpg" alt="Alphabet Character Kids Pillow">
+                <span class="product-badge">Bestseller</span>
+                <div class="product-wishlist">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-actions">
+                    <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zeroone.jpg', 'alphabet character kids pilow', '₹225', 'A Uniquer Pilow kids for kis for there high IQ.', 'BABIES', '5', 'Alphabet Character Kids Pillow')">Quick View</button>
+                    <button class="add-cart" onclick="event.stopPropagation(); addToCart('Alphabet Character Kids Pillow', '₹225')">Add to Cart</button>                                                                                                                                                                           
+                </div>
+            </div>                                                                                                                                                                                             
+            <div class="product-info">
+                <span class="product-category">All</span>
+                <h3>Alphabet Character Kids Pillow</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>(48)</span>
+                </div>
+                <div class="product-price">
+                    <span class="current-price">₹225</span>
+                </div>
+                <button class="product-btn" onclick="chooseOrderMethod('Alphabet Character Kids Pillow', '₹225')">Order Now</button>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div id="product2" class="product-card" onclick="showProductDetail('zerotwo.jpg', 'Mysil Woman Nightwear', '₹299', 'An elegant dress for woman. Perfect for good and healthy relationship.', 'Woman', 'All size', 'Nightwaer')">
+            <div class="product-image">
+                <img src="zerotwo.jpg" alt="Mysil Woman Nightwear">
+                <span class="product-badge sale">Sale</span>
+                <div class="product-wishlist">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-actions">
+                    <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerotwo.jpg', 'Mysil Woman Nightwear', '₹299', 'An elegant dress for woman.', 'Woman', 'All size', 'Nightwaer')">Quick View</button>
+                    <button class="add-cart" onclick="event.stopPropagation(); addToCart('Mysil Woman Nightwear', '₹299')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <span class="product-category">all</span>
+                <h3>Mysil Woman Nightwear</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span>(32)</span>
+                </div>
+                <div class="product-price">
+                    <span class="current-price">₹299</span>
+                    <span class="original-price">₹599</span>
+                    <span class="discount">49% OFF</span>
+                </div>
+                <button class="product-btn" onclick="chooseOrderMethod('Mysil Woman Nightwear', '₹299')">Order Now</button>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div id="product3" class="product-card" onclick="showProductDetail('zerothree.jpg', 'Muuchstac face wash', '₹350', 'Best product for boys and men skin. Remove acne pimples darkspot and rinkles.', 'Both Genders', '100ml', 'Facewash')">
+            <div class="product-image">
+                <img src="zerothree.jpg" alt="Muuchstac face wash">
+                <span class="product-badge new">New</span>
+                <div class="product-wishlist">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-actions">
+                    <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerothree.jpg', 'Muuchstac face wash', '₹350', 'est product for boys and men skin.', 'Both Genders', '100ml', 'Facewash')">Quick View</button>
+                    <button class="add-cart" onclick="event.stopPropagation(); addToCart('Muuchstac face wash', '₹350')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <span class="product-category">all</span>
+                <h3>Muuchstac face wash</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>(67)</span>
+                </div>
+                <div class="product-price">
+                    <span class="current-price">₹350</span>
+                </div>
+                <button class="product-btn" onclick="chooseOrderMethod('Muuchstac face wash', '₹350')">Order Now</button>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div id="product4" class="product-card" onclick="showProductDetail('zerofour.jpg', 'Aaronika hand gripper', '₹280', 'Best product for arms and wrest strenght, Train biceps and triceps weak muscles.', 'Men', '10 to 60 kg', 'Gripper')">
+            <div class="product-image">
+                <img src="zerofour.jpg" alt="Aaronika hand gripper">
+                <span class="product-badge">Popular</span>
+                <div class="product-wishlist">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-actions">
+                    <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerofour.jpg', 'Aaronika hand gripper', '₹280', 'Best product for arms and wrest strenght.', 'Men', '10 to 60 kg', 'Gripper')">Quick View</button>
+                    <button class="add-cart" onclick="event.stopPropagation(); addToCart('Aaronika hand gripper', '₹280')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <span class="product-category">Men</span>
+                <h3>Aaronika hand gripperd</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>(89)</span>
+                </div>
+                <div class="product-price">
+                    <span class="current-price">₹280</span>
+                </div>
+                <button class="product-btn" onclick="chooseOrderMethod('Aaronika hand gripper', '₹280')">Order Now</button>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div id="product5" class="product-card" onclick="showProductDetail('zerofive.jpg', 'Zig Zag Kurti', '₹280', 'Best Kurti For Young Woman. Style, Deep, - Eligant Styliless Look in Group.', 'Woman', 'All SIZE', 'Dress')">
+            <div class="product-image">
+                <img src="zerofive.jpg" alt="Zig Zag Kurti">
+                <span class="product-badge">Premium</span>
+                <div class="product-wishlist">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-actions">
+                    <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerofive.jpg', 'Zig Zag Kurti', '₹280', 'Best Kurti For Young Woman. Style, Deep.', 'Woman', 'All Size', 'Dress')">Quick View</button>
+                    <button class="add-cart" onclick="event.stopPropagation(); addToCart('Zig Zag Kurti', '₹280')">Add to Cart</button>                                             
+                </div>
+            </div>
+            <div class="product-info">
+                <span class="product-category">Premium</span>
+                <h3>Zig Zag Kurti</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>(156)</span>
+                </div>
+                <div class="product-price">
+                    <span class="current-price">₹280</span>
+                </div>
+                <button class="product-btn" onclick="chooseOrderMethod('Zig Zag Kurti', '₹280')">Order Now</button>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div id="product6" class="product-card" onclick="showProductDetail('zerosix.jpg', 'Wrist Hand', '₹180', 'Helping to to became strongh your wrest and save you from injury execerise wear.', 'Men', '1', 'Wrist band')">
+            <div class="product-image">
+                <img src="zerosix.jpg" alt="Wrist Hand">
+                <span class="product-badge new">New</span>
+                <div class="product-wishlist">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-actions">
+                    <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerosix.jpg', 'Wrist Hand', '₹180', 'Increase your wrest strenght.', 'Men', '1', 'Wrist band')">Quick View</button>
+                    <button class="add-cart" onclick="event.stopPropagation(); addToCart('Wrist Hand', '₹180')">Add to Cart</button>
+                </div>
+            </div>                                                                                                                                                                                                         
+            <div class="product-info">
+                <span class="product-category">Men</span>
+                <h3>Wrist Hand</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span>(24)</span>
+                </div>
+                <div class="product-price">
+                    <span class="current-price">₹180</span>
+                </div>
+                <button class="product-btn" onclick="chooseOrderMethod('Wrist Hand', '₹180')">Order NOW</button>
+            </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div id="product7" class="product-card" onclick="showProductDetail('zeroseven.jpg', 'Premanand ji maharaj', '₹155', 'Wall hangning for living room and bedroom.', 'All', '1', 'Spritual Digital')">
+            <div class="product-image">
+                <img src="zeroseven.jpg" alt="Premanand ji maharaj">
+                <span class="product-badge">Bestseller</span>
+                <div class="product-wishlist">
+                    <i class="far fa-heart"></i>
+                </div>
+                <div class="product-actions">
+                    <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zeroseven.jpg', 'Premanand ji maharaj', '₹155', 'Wall hangning for living room and bedroom.', 'Sprituals', '1', 'Spritual Digital')">Quick View</button>
+                    <button class="add-cart" onclick="event.stopPropagation(); addToCart('Premanand ji maharaj', '₹155')">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <span class="product-category">Decoration</span>
+                <h3>Premanand ji maharajn</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>(78)</span>
+                </div>
+                <div class="product-price">
+                    <span class="current-price">₹155</span>
+                </div>
+                <button class="product-btn" onclick="chooseOrderMethod('Premanand ji maharaj', '₹155')">Order Now</button>
+            </div>
+        </div>
+
+        <!-- Product 8 -->
+<div id="product8" class="product-card" onclick="showProductDetail('zeroeight.jpg', 'Delightfull Poted', '₹237', 'Increase your room beuty. Artificial plant, and Perfact For Hall.', 'All', 'Pack Of 8', 'Decoration')">
+    <div class="product-image">
+        <img src="zeroeight.jpg" alt="Delightfull Poted">
+        <span class="product-badge sale">Discount</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zeroeight.jpg', 'Delightfull Poted', '₹237', ' Perfact For Hall.', 'All', '100ml', 'Pack Of 8')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Delightfull Poted', '₹237')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Delightfull Poted</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(78)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹237</span>
+            <span class="original-price">₹480</span>
+            <span class="discount">OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Delightfull Poted', '₹237')">Order</button>
+    </div>
+</div>
+
+<!-- Product 9 - Extra </div> HATAYA GAYA! -->
+<div id="product9" class="product-card" onclick="showProductDetail('zeronine.jpg', '1 Lakh Piggi Bank', '₹210', 'Helping You To Save Yur Money , Wooden Money Bank, and Perfect For LOng Saving.', 'All', '1', 'Saving Bank')">
+    <div class="product-image">
+        <img src="zeronine.jpg" alt="1 Lakh Piggi Bank">
+        <span class="product-badge sale">GOOD</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zeronine.jpg', '1 Lakh Piggi Bank', '₹210', 'Helping You To Save Yur Money.', 'All', '1', 'Saving Bank')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('1 Lakh Piggi Bank', '₹210')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>1 Lakh Piggi Bank</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(98)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹210</span>
+            <span class="original-price">₹315</span>
+            <span class="discount">25% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('1 Lakh Piggi Bank', '₹210')">Order Out Of Stock</button>
+    </div>
+</div>
+
+<!-- Product 10 Extra </div> HATAYA GAYA! -->
+<div id="product10" class="product-card" onclick="showProductDetail('zeroten.jpg', 'Women Sleepwear & Nighty', '₹319', 'Best For Young Women , Looks Sexy And Hot.', 'All', '1', 'Sexy SLeepwear')">
+    <div class="product-image">
+        <img src="zeroten.jpg" alt="Women Sleepwear & Nighty">
+        <span class="product-badge sale">61% OFF</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zeroten.jpg', 'Women Sleepwear & Nighty', '₹319', 'Best For Young Women , Looks Sexy And Hot.', 'All', '1', 'Sexy SLeepwear')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Women Sleepwear & Nighty', '₹319')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Women Sleepwear & Nighty</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(120)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹319</span>
+            <span class="original-price">₹700</span>
+            <span class="discount"> Discount On</span>
+        </div>
+
+        <button class="product-btn" onclick="chooseOrderMethod('Women Sleepwear & Nighty', '₹319')">Order</button>
+
+        <!-- NEW HIGHLIGHT BUTTON -->
+        <a href="#product10" class="focus-btn" onclick="event.stopPropagation();">Highlight</a>
+
+    </div>
+</div>
+
+
+<!-- Product 11 Extra </div> HATAYA GAYA! -->
+<div id="product11" class="product-card" onclick="showProductDetail('zeroeleven.jpg', 'The Master Of Destination', '₹157', 'Best Inner Phycology Book, Give You Your Inner Consequence.', 'All', '1', 'The Master Of Psychology')">
+    <div class="product-image">
+        <img src="zeroeleven.jpg" alt="The Master Of Psychology">
+        <span class="product-badge sale">New</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zeroeleven.jpg', 'The Master Of Psychology', '₹157', 'Best Inner Phycology Book, Give You Your Inner Consequence.', 'All', '1', 'Self Help Book')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('The Master Of Destination', '₹157')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>The Master Of Destination</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(102)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹157</span>
+            <span class="original-price">₹319</span>
+            <span class="discount">51% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('The Master Of Destination', '₹157')">Order</button>
+    </div>
+</div>
+
+<!-- Product 12 Extra </div> HATAYA GAYA! -->
+<div id="product12" class="product-card" onclick="showProductDetail('zerotwelve.jpg', 'Multi purpose Shoe Rack', '₹450', 'Best For Taking Shoe and Small
+Things.', 'All', '1', 'Shoe Rack')">
+    <div class="product-image">
+        <img src="zerotwelve.jpg" alt="Multi Purpose Shue Rack">
+        <span class="product-badge sale">39% OFF</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerotwelve.jpg', 'Multi Purpose Shoe Rak ', '₹450', 'Best For Taking Shoe and Small
+Things.', 'All', '1', 'Shoe Rack')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Multi Purpose Shoe Rack', '₹450')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Multi Purpose Shoe Rack</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(189)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹450</span>
+            <span class="original-price">₹750</span>
+            <span class="discount">39% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Multi Purpose Shoe Rack', '₹450')">Order</button>
+    </div>
+</div>
+
+<!-- Product 13 Extra </div> HATAYA GAYA! -->
+<div id="product13" class="product-card" onclick="showProductDetail('zerothirteen.jpg', 'Nighwaer Lingerie Nighty', '₹250', 'Nighwear Lingerie With Panty Nighty Specially For Romance.', 'All Size', '1', 'Sexy Lengerie')">
+    <div class="product-image">
+        <img src="zerothirteen.jpg" alt="Sexy Lingerie For Romance">
+        <span class="product-badge sale">PREMIUM</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerothirteem.jpg', 'Nightwear Lingerie Nighty', '₹250', 'Best For Romance and Night Sleep.', 'All', '1', 'Sexy Lingerie')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Nightwear Lingerie Nighty', '₹250')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Nightwear Lingerie Nighty</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(508)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹250</span>
+            <span class="original-price">₹525</span>
+            <span class="discount">45% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Nightwear Hot Lengerie Nighty', '₹250')">Order</button>
+    </div>
+</div>
+
+<!-- Product 14 Extra </div> HATAYA GAYA! -->
+<div id="product14" class="product-card" onclick="showProductDetail('zerofourteen.jpg', 'Read People Like a Book', '₹233', 'Understand How People Think Analyze There Emotions Thougt Intention And Behaviour.', 'All', '1', 'Pshycological Book')">
+    <div class="product-image">
+        <img src="zerofourteen.jpg" alt="Read People Like a Book">
+        <span class="product-badge sale">GOOD</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerofourteen.jpg', 'Read People Like A Book', '₹233', 'Understand How People Think Analyze There Emotions Thougt Intention And Behaviour.', 'All', '1', 'Shoe Rack')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Read People Like A Book', '₹233')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Read People Like A Book</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(205)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹233</span>
+            <span class="original-price">₹370</span>
+            <span class="discount">19% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Read People Like A Book', '₹233')">Order</button>
+    </div>
+</div>
+
+<!-- Product 15 Extra </div> HATAYA GAYA! -->
+<div id="product15" class="product-card" onclick="showProductDetail('zerofifteen.jpg', 'Tubeless Tyre Puncture Repair', '₹300', 'Accoceries For Emergency.', 'All', '1', 'Tyre Puncture Repair Kit ')">
+    <div class="product-image">
+        <img src="zerofifteen.jpg" alt="Tubless Tyre Puncture Repair Kit">
+        <span class="product-badge sale">POPULOR</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerofofteen.jpg', ' Puncture Tyre Repair Kit', '₹300', 'Accoceries Ofr Emergency Situation.', 'All', '1', 'Tyre Repair Kit')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Tubeless Tyre Repair Kit', '₹300')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Tubeless Tyre Repair Kit</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(102)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹300</span>
+            <span class="original-price">₹750</span>
+            <span class="discount">30% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Tubeless Tyre Repair Kit', '₹300')">Order</button>
+    </div>
+</div>
+
+<!-- Product 16 Extra </div> HATAYA GAYA! -->
+<div id="product16" class="product-card" onclick="showProductDetail('zerosixteen.jpg', 'Red Tob Perfume', '₹480', 'Best Spicy Smooky Fragrance.', 'All', '50Ml', 'Red Tob Perfume')">
+    <div class="product-image">
+        <img src="zerosixteen.jpg" alt="Red Ton Perfume">
+        <span class="product-badge sale">PREMIUM</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerosixteen.jpg', 'Red Tob Perfume ', '₹480', 'Best Spicy Smooky Fragrance.', 'All', '50Ml', 'Red To ')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Red Tob Perfume ', '₹480')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Red Tob Perfume</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(189)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹480</span>
+            <span class="original-price">₹800</span>
+            <span class="discount">42% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Red Tob Perfume', '₹480')">Order</button>
+    </div>
+</div>
+
+<!-- Product 17 Extra </div> HATAYA GAYA! -->
+<div id="product17" class="product-card" onclick="showProductDetail('zeroseventeen.jpg', 'Atomic Habits', '₹210', 'Tiny Changes Remarkable Result.', 'All', '1', 'Book')">
+    <div class="product-image">
+        <img src="zeroSeventeen.jpg" alt="Tiny Changes Remarkable Result">
+        <span class="product-badge sale">41% OFF</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zeroseventeen.jpg', 'Atomic Habits ', '₹210', 'Tiny Changes Remarkable Result.', 'All', '1', 'Book')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Atomic Book', '₹210')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Atomic Book</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(87)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹210</span>
+            <span class="original-price">₹441</span>
+            <span class="discount">41% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Atomic Book', '₹210')">Order</button>
+    </div>
+</div>
+
+<!-- Product 18 Extra </div> HATAYA GAYA! -->
+<div id="product18" class="product-card" onclick="showProductDetail('zeroeghteen.jpg', 'Jawline Exerciser', '₹207', 'Fix Jawline Face Men and Women.', 'All Gender', '2', 'Jawline Exerciser Fix Jaw')">
+    <div class="product-image">
+        <img src="zeroeighteen.jpg" alt="Jawline Excerciser">
+        <span class="product-badge sale">Best</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zeroeighteen.jpg', 'Attractive Jawline Tool', '₹207', 'Best Tool For Attractive Jawline Tool.', 'All Gendres', '2', 'Jawline Tools')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Jawline Exercise Tool', '₹207')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Jawline Exercise Tool</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(112)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹207</span>
+            <span class="original-price">₹450</span>
+            <span class="discount">55% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Jawline Exercise Tool', '₹207')">Order</button>
+    </div>
+</div>
+
+<!-- Product 19 Extra </div> HATAYA GAYA! -->
+<div id="product19" class="product-card" onclick="showProductDetail('zeronineteen.jpg', 'Pushup Exercise Board', '₹427', 'Body Building Push Up Board.', 'All Gender', '1', 'Muscle Building Push Up Board')">
+    <div class="product-image">
+        <img src="zeronineteen.jpg" alt="Push Up Board">
+        <span class="product-badge sale">Best</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zeronineteen.jpg', 'Pushup Exercise Board', '₹427', 'Best Pushup Exercise Tool.', 'All Gendres', '1', 'Pushup Exercise Tool')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Pushup Exercise Tool', '₹427')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Push Up Exercise Tool</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(112)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹427</span>
+            <span class="original-price">₹600</span>
+            <span class="discount">37% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Pushup Exercise Tool', '₹427')">Order</button>
+    </div>
+</div>
+
+<!-- Product 20 Extra </div> HATAYA GAYA! -->
+<div id="product20" class="product-card" onclick="showProductDetail('zerotwenty.jpg', 'Posture Corrector Belt', '₹420', 'Fix Back Postures , Support Spine.', 'All Gender', '1', 'Straight and Powerful Postures')">
+    <div class="product-image">
+        <img src="zerotwenty.jpg" alt="Posture Corrector Belt">
+        <span class="product-badge sale">Best</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+</div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerotwenty.jpg', 'Posture Corrector Belt', '₹420', 'Posture Corrector Belt.', 'All Genders', '1', 'Posture Correcter Tools')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Posture Corrector Tool', '₹420')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Posture Corrector Belt</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(93)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹420</span>
+            <span class="original-price">₹500</span>
+            <span class="discount">18% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Posture Corrector Belt', '₹420')">Order</button>
+    </div>
+</div>
+
+<!-- Product 21 Extra </div> HATAYA GAYA! -->
+<div id="product21" class="product-card" onclick="showProductDetail('zerotwentyone.jpg', 'Hair Removal Creame', '₹390', 'Remove Hair From Skin Smoothly.', 'Female', '1', 'Hair Removal Creame')">
+    <div class="product-image">
+        <img src="zerotwentyone.jpg" alt="Hair Removal Cream">
+        <span class="product-badge sale">Best</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerotwentyone.jpg', 'Hair Removal Cream', '₹390', 'Best Creame For Removing Hair and Smooth Skin.', 'Female', '1', 'Hair Removal Creame')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Hair Removal Creame', '₹390')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Hair Removal Cream</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(178)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹390</span>
+            <span class="original-price">₹450</span>
+            <span class="discount">15% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Hair Removal Creame', '₹390')">Order</button>
+    </div>
+</div>
+
+<!-- Product 22 Extra </div> HATAYA GAYA! -->
+<div id="product22" class="product-card" onclick="showProductDetail('zerotwentytwod.jpg', 'Height Veda ', '₹499', 'Natural Height Increasing Product.', 'All Gender', '1', 'Increase Your Height Herbal Bone Growth Powder')">
+    <div class="product-image">
+        <img src="zerotwentytwo.jpg" alt="Hieght Veda">
+        <span class="product-badge sale">Best</span>
+        <div class="product-wishlist">
+            <i class="far fa-heart"></i>
+        </div>
+        <div class="product-actions">
+            <button class="quick-view" onclick="event.stopPropagation(); showProductDetail('zerotwentytwo.jpg', 'Increase Height Naturally', '₹499', 'Best Herbal Powder For Increasing Hieght Bone.', 'All Gendres', '1', 'Height Veda')">Quick View</button>
+            <button class="add-cart" onclick="event.stopPropagation(); addToCart('Height Veda', '₹499')">Add to Cart</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <span class="product-category">All</span>
+        <h3>Height Veda</h3>
+        <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(272)</span>
+        </div>
+        <div class="product-price">
+            <span class="current-price">₹499</span>
+            <span class="original-price">₹899</span>
+            <span class="discount">55% OFF</span>
+        </div>
+        <button class="product-btn" onclick="chooseOrderMethod('Height Veda', '₹399')">Order</button>
+    </div>
+</div>
+
+    </div>
+</section>
+
+<!-- Category Section -->
+<section class="section category-section">
+    <div class="section-header">
+        <h2>Shop by Category</h2>
+        <p>Find your lifestyle</p>
+    </div>
+    
+   <div class="category-grid">
+    
+    <div class="category-card">
+        <img src="mennn.jpg" alt="Men style">
+        <div class="category-overlay">
+            <div class="category-content">
+                <h3>Men's Collection</h3>
+                <p>Bold, Stylish and Unique</p>
+                <a href="https://snix001edu.github.io/sNIX/" target="_blank" class="category-link">
+                    Explore Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="category-card">
+        <img src="girl.jpg" alt="Women's Style">
+        <div class="category-overlay">
+            <div class="category-content">
+                <h3>Women's Collection</h3>
+                <p>Elegant, Floral Best For Beauties</p>
+                <a href="https://snix001edu.github.io/sNIX/" target="_blank" class="category-link">
+                    Explore Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+    <div class="newsletter-content">
+        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <a href="#" class="logo">Zenvix<span>.</span></a>
+            <div class="social-links">
+                <a href="https://wa.me/919319942411" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/riseup003" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h4>Customer Service</h4>
+            <ul>
+                <li><a href="#">Coustmer service is very important for us if you have any problem regarding us please contact us on social media handle.</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h4>Contact Us</h4>
+            <ul class="contact-info">
+                <li><i class="fas fa-envelope"></i> <span>arise1626@gmail.com</span></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2026 Zenvix. All Rights Reserved. Crafted with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for fragrance lovers</p>
+        <div class="payment-methods">
+            <i class="fab fa-cc-discover"></i>
+        </div>
+    </div>
+</footer>
+
+<!-- Product Detail Modal -->
+<div class="modal-overlay" id="productDetailModal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3>Product Details</h3>
+            <button class="modal-close" onclick="closeProductDetail()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="product-modal-content">
+                <div class="product-modal-image">
+                    <img id="detailImage" src="" alt="Product Image">
+                </div>
+                <div class="product-modal-info">
+                    <h2 id="detailName"></h2>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(45 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price" id="detailPrice"></span>
+                    </div>
+                    <p id="detailDesc"></p>
+                    
+                    <div class="product-meta">
+                        <div class="product-meta-item">
+                            <span>Suitable For</span>
+                            <span id="detailGender"></span>
+                        </div>
+                        <div class="product-meta-item">
+                            <span>Quanity</span>
+                            <span id="detailML"></span>
+                        </div>
+                        <div class="product-meta-item">
+                            <span>Product Type</span>
+                            <span id="detailFragrance"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <label>Quantity:</label>
+                        <div class="quantity-input">
+                            <button onclick="decreaseQty()">-</button>
+                            <input type="number" id="productQty" value="1" min="1" readonly>
+                            <button onclick="increaseQty()">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn-primary" onclick="addToCartFromModal()">Add to Cart</button>
+                        <button class="btn-secondary" onclick="buyNow()">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Method Modal -->
+<div class="modal-overlay" id="orderMethodModal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3>Place Your Order</h3>
+            <button class="modal-close" onclick="closeOrderMethod()">&times;</button>
+       </div>
+        <div class="modal-body">
+            <div class="order-methods">
+                <button class="order-method-btn whatsapp" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Order via WhatsApp</span>
+                </button>
+                
+                <button class="order-method-btn instagram" id="instagramBtn">
+                    <i class="fab fa-instagram"></i>
+                    <span>Order via Instagram not work</span>
+                </button>
+               
+                <button class="order-method-btn website" id="webOrderBtn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Order on Website</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Direct Order Form Modal -->
+<div class="modal-overlay" id="directOrderModal">
+    <div class="modal-container" style="max-width: 700px;">
+        <div class="modal-header">
+            <h3>Complete Your Order</h3>
+            <button class="modal-close" onclick="closeDirectOrder()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <!-- Web3Forms Form Start -->
+            <form id="web3OrderForm" onsubmit="handleWeb3Submit(event)">
+                
+                <!-- Web3Forms Required Fields -->
+                <input type="hidden" name="access_key" value="bef10bca-a8f0-4c9a-989f-09989edd44a8">
+                <input type="hidden" name="subject" value="New Order - Zenvix Perfume Store">
+                <input type="hidden" name="redirect" value="https://yourwebsite.com/success"> <!-- Optional: Success page URL -->
+
+                <!-- Hidden Fields for Product Details -->
+                <input type="hidden" name="product_name" id="web3_product_name">
+                <input type="hidden" name="price" id="web3_price">
+                <input type="hidden" name="quantity" id="web3_quantity">
+                <input type="hidden" name="total_amount" id="web3_total">
+
+                <div class="order-summary">
+                    <h4>Order Summary , After Order We Contact You</h4>
+                    <div class="summary-item">
+                        <span>Product</span>
+                        <span id="orderProductName"></span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Price</span>
+                        <span id="orderProductPrice"></span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Quantity</span>
+                        <span id="orderQuantity">1</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total</span>
+                        <span id="orderTotal"></span>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="customer_name" id="orderName" placeholder="Enter your full name" required>
+                    </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="phone" id="orderPhone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>City *</label>
+                        <input type="text" name="city" id="orderCity" placeholder="Enter your city" required>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label>Full Address *</label>
+                    <textarea name="address" id="orderAddress" placeholder="Enter your complete delivery address" required></textarea>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label>Order Notes (Optional)</label>
+                    <textarea name="notes" id="orderNotes" placeholder="Any special instructions for your order"></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary" style="width: 100%;">Place Order</button>
+            </form>
+            <!-- Web3Forms Form End -->
+        </div>
+    </div>
+</div>
+<!-- Order Success Modal -->
+<div class="modal-overlay" id="orderSuccessModal">
+    <div class="modal-container" style="max-width: 450px;">
+        <div class="modal-body">
+            <div class="order-success">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h3>Order Placed Successfully!</h3>
+                <p>Thank you for your order. We will contact you shortly to confirm your order and delivery details.</p>
+                <button class="btn-primary" onclick="closeSuccessModal()">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cart Sidebar -->
+<div class="modal-overlay" id="cartSidebar">
+    <div class="modal-container" style="max-width: 450px; margin: 0; position: fixed; right: 0; top: 0; height: 100%; border-radius: 0; max-width: 400px;">
+        <div class="modal-header">
+            <h3>Shopping Cart</h3>
+            <button class="modal-close" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="modal-body" style="max-height: 60vh; overflow-y: auto;">
+            <div id="cartItems">
+                <p style="text-align: center; color: var(--text-muted); padding: 40px 0;">Your cart is empty</p>
+            </div>
+        </div>
+        <div style="padding: 20px; border-top: 1px solid var(--border-color);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                <span style="font-weight: 600;">Total:</span>
+                <span style="font-weight: 700; font-size: 18px;" id="cartTotal">₹0</span>
+            </div>
+            <button class="btn-primary" style="width: 100%;" onclick="checkoutFromCart()">Proceed to Checkout</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Item added to cart!</span>
+</div>
+
+<!-- JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script>
+    // ===== VARIABLES =====
+    let currentProduct = "";
+    let currentPrice = "";
+    let cart = [];
+    let cartCount = 0;
+
+    // ===== LOADING SCREEN =====
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.getElementById('loadingScreen').classList.add('hidden');
+        }, 1500);
+    });
+
+    // ===== HEADER SCROLL EFFECT =====
+    window.addEventListener('scroll', function() {
+        const header = document.getElementById('mainHeader');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // ===== SCROLL TO PRODUCTS =====
+    function scrollToProducts() {
+        document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ===== PRODUCT DETAIL MODAL =====
+    function showProductDetail(image, name, price, desc, gender, ml, fragrance) {
+        document.getElementById('detailImage').src = image;
+        document.getElementById('detailName').innerText = name;
+        document.getElementById('detailPrice').innerText = price;
+        document.getElementById('detailDesc').innerText = desc;
+        document.getElementById('detailGender').innerText = gender;
+        document.getElementById('detailML').innerText = ml;
+        document.getElementById('detailFragrance').innerText = fragrance;
+        
+        currentProduct = name;
+        currentPrice = price;
+        
+        document.getElementById('productDetailModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeProductDetail() {
+        document.getElementById('productDetailModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // ===== QUANTITY SELECTOR =====
+    function increaseQty() {
+        let qty = parseInt(document.getElementById('productQty').value);
+        document.getElementById('productQty').value = qty + 1;
+    }
+
+    function decreaseQty() {
+        let qty = parseInt(document.getElementById('productQty').value);
+        if (qty > 1) {
+            document.getElementById('productQty').value = qty - 1;
+        }
+    }
+
+    // ===== ORDER METHOD MODAL =====
+    function chooseOrderMethod(product, price) {
+        currentProduct = product;
+        currentPrice = price;
+        
+        document.getElementById('orderMethodModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+
+        // WhatsApp Order
+        document.getElementById('whatsappBtn').onclick = function() {
+            let message = `Hello Zenvix Store! 👋\n\nI want to order:\n📦 Product: ${currentProduct}\n💰 Price: ${currentPrice}\n\nPlease confirm my order.`;
+            let url = "https://wa.me/919319942411?text=" + encodeURIComponent(message);
+            window.open(url, "_blank");
+        };
+
+        // Instagram Order
+        document.getElementById('instagramBtn').onclick = function() {
+            let message = `Hello Zenvix Store! 👋\nI want to order:\n📦 Product: ${currentProduct}\n💰 Price: ${currentPrice}`;
+            alert("Message to send on Instagram:\n\n" + message);
+            window.open("https://instagram.com/riseup003", "_blank");
+        };
+
+        // Website Order
+        document.getElementById('webOrderBtn').onclick = function() {
+            closeOrderMethod();
+            openDirectOrder();
+        };
+    }
+
+    function closeOrderMethod() {
+        document.getElementById('orderMethodModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // ===== DIRECT ORDER FORM =====
+    function openDirectOrder() {
+        document.getElementById('orderProductName').innerText = currentProduct;
+        document.getElementById('orderProductPrice').innerText = currentPrice;
+        document.getElementById('orderQuantity').innerText = document.getElementById('productQty').value;
+        
+        let qty = parseInt(document.getElementById('productQty').value);
+        let price = parseInt(currentPrice.replace('₹', ''));
+        document.getElementById('orderTotal').innerText = '₹' + (qty * price);
+        
+        document.getElementById('directOrderModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDirectOrder() {
+        document.getElementById('directOrderModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // ===== DIRECT ORDER FORM =====
+function openDirectOrder() {
+    // Product details ko summary mein dikhayein
+    document.getElementById('orderProductName').innerText = currentProduct;
+    document.getElementById('orderProductPrice').innerText = currentPrice;
+    document.getElementById('orderQuantity').innerText = document.getElementById('productQty').value;
+    
+    let qty = parseInt(document.getElementById('productQty').value);
+    let price = parseInt(currentPrice.replace('₹', ''));
+    let total = qty * price;
+    document.getElementById('orderTotal').innerText = '₹' + total;
+    
+    // Web3Forms ke liye hidden fields update karein
+    document.getElementById('web3_product_name').value = currentProduct;
+    document.getElementById('web3_price').value = currentPrice;
+    document.getElementById('web3_quantity').value = qty;
+    document.getElementById('web3_total').value = '₹' + total;
+    
+    document.getElementById('directOrderModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDirectOrder() {
+    document.getElementById('directOrderModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// ===== WEB3FORMS SUBMIT FUNCTION =====
+function handleWeb3Submit(event) {
+    event.preventDefault();
+    
+    const form = document.getElementById('web3OrderForm');
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    // Web3Forms Endpoint
+    const url = 'https://api.web3forms.com/submit';
+    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then((response) => {
+        if (response.ok) {
+            closeDirectOrder();
+            document.getElementById('orderSuccessModal').style.display = 'flex';
+            form.reset();
+            showToast('Order placed successfully! Check your email.');
+        } else {
+            showToast('Order failed! Please try again.');
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        showToast('Something went wrong!');
+    });
+}
+    function closeSuccessModal() {
+        document.getElementById('orderSuccessModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // ===== CART FUNCTIONS =====
+    function addToCart(product, price) {
+        cart.push({ product: product, price: price });
+        cartCount = cart.length;
+        document.getElementById('cartCount').innerText = cartCount;
+        showToast(product + ' added to cart!');
+    }
+
+    function addToCartFromModal() {
+        let qty = parseInt(document.getElementById('productQty').value);
+        for (let i = 0; i < qty; i++) {
+            cart.push({ product: currentProduct, price: currentPrice });
+        }
+        cartCount = cart.length;
+        document.getElementById('cartCount').innerText = cartCount;
+        showToast(currentProduct + ' added to cart!');
+        closeProductDetail();
+    }
+
+    function buyNow() {
+        closeProductDetail();
+        chooseOrderMethod(currentProduct, currentPrice);
+    }
+
+    function toggleCart() {
+        let cartModal = document.getElementById('cartSidebar');
+        if (cartModal.style.display === 'flex') {
+            cartModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        } else {
+            updateCartDisplay();
+            cartModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+       // ===== UPDATE CART DISPLAY =====
+    function updateCartDisplay() {
+        let cartItems = document.getElementById('cartItems');
+        let cartTotal = document.getElementById('cartTotal');
+        
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 40px 0;">Your cart is empty</p>';
+            cartTotal.innerText = '₹0';
+            return;
+        }
+        
+        let html = '';
+        let total = 0;
+        
+        cart.forEach((item, index) => {
+            let price = parseInt(item.price.replace('₹', ''));
+            total += price;
+            html += `
+                <div style="display: flex; align-items: center; gap: 15px; padding: 15px 0; border-bottom: 1px solid var(--border-color);">
+                    <div style="width: 60px; height: 60px; background: var(--light-gray); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-spray-can" style="color: var(--accent-color);"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="font-size: 14px; margin-bottom: 5px;">${item.product}</h4>
+                        <span style="color: var(--accent-color); font-weight: 600;">${item.price}</span>
+                    </div>
+                    <button onclick="removeFromCart(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 18px;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+        });
+        
+        cartItems.innerHTML = html;
+        cartTotal.innerText = '₹' + total;
+    }
+
+    // ===== REMOVE FROM CART =====
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        cartCount = cart.length;
+        document.getElementById('cartCount').innerText = cartCount;
+        updateCartDisplay();
+    }
+
+    // ===== CHECKOUT FROM CART =====
+    function checkoutFromCart() {
+        if (cart.length === 0) {
+            showToast('Your cart is empty!');
+            return;
+        }
+        
+        toggleCart();
+        
+        // Calculate total
+        let total = 0;
+        let products = [];
+        cart.forEach(item => {
+            let price = parseInt(item.price.replace('₹', ''));
+            total += price;
+            products.push(item.product);
+        });
+        
+        currentProduct = products.join(', ');
+        currentPrice = '₹' + total;
+        
+        openDirectOrder();
+    }
+
+    // ===== SEARCH FUNCTION =====
+    function searchProduct() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let products = document.getElementsByClassName('product-card');
+        
+        for (let i = 0; i < products.length; i++) {
+            let name = products[i].querySelector('h3').innerText.toLowerCase();
+            let category = products[i].querySelector('.product-category').innerText.toLowerCase();
+            
+            if (name.includes(input) || category.includes(input)) {
+                products[i].style.display = 'block';
+                products[i].style.animation = 'fadeInUp 0.5s ease';
+            } else {
+                products[i].style.display = 'none';
+            }
+        }
+    }
+
+    // ===== FILTER PRODUCTS =====
+    function filterProducts(category) {
+        let products = document.getElementsByClassName('product-card');
+        
+        for (let i = 0; i < products.length; i++) {
+            let productCategory = products[i].querySelector('.product-category').innerText;
+            
+            if (category === 'All' || productCategory === category || (category === 'Men' && productCategory === 'All') || (category === 'Women' && productCategory === 'All')) {
+                products[i].style.display = 'block';
+                products[i].style.animation = 'fadeInUp 0.5s ease';
+            } else {
+                products[i].style.display = 'none';
+            }
+        }
+        
+        // Scroll to products
+        document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ===== NEWSLETTER SUBSCRIPTION =====
+    function subscribeNewsletter(event) {
+        event.preventDefault();
+        let email = event.target.querySelector('input').value;
+        
+        if (email) {
+            showToast('Thank you for subscribing!');
+            event.target.reset();
+        }
+    }
+
+    // ===== TOAST NOTIFICATION =====
+    function showToast(message) {
+        let toast = document.getElementById('toast');
+        let toastMessage = document.getElementById('toastMessage');
+        
+        toastMessage.innerText = message;
+        toast.classList.add('show');
+        
+        setTimeout(function() {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    // ===== CLOSE MODALS ON OUTSIDE CLICK =====
+    window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('modal-overlay')) {
+            event.target.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // ===== ESC KEY TO CLOSE MODALS =====
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
